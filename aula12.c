@@ -3,13 +3,13 @@
 
 const float PI = 3.14159; 
 
-float areaRetangulo(float *base, float *altura);
-float areaTrinagulo(float *base, float *altura);
-float areaTrinaguloRetangulo(float *cateto1, float *cateto2);
-float areaCirculo(float *raio);
-float perimetroCirculo(float *raio);
-float mediaTresNumeros(float *num1, float *num2, float *num3);
-float hipotenusaTrianguloRetangulo(float *catetoA, float * catetoB);
+float areaRetangulo(float base, float altura);
+float areaTrinagulo(float base, float altura);
+float areaTrinaguloRetangulo(float cateto1, float cateto2);
+float areaCirculo(float raio);
+float perimetroCirculo(float raio);
+float mediaTresNumeros(float num1, float num2, float num3);
+float hipotenusaTrianguloRetangulo(float catetoA, float catetoB);
 
 int main()
 {
@@ -23,7 +23,9 @@ int main()
     printf("4. Área de círculo.\n");
     printf("5. Perímetro de círculo.\n");
     printf("6. Média de três números de ponto flutuante.\n");
-    printf("7. Hipotenusa de um triângulo retângulo.\n\n");
+    printf("7. Hipotenusa de um triângulo retângulo.\n");
+    printf("0. Sair.\n");
+    printf("Selecione uma opção: ");
     scanf("%d", &opcao);
 
     
@@ -99,58 +101,63 @@ int main()
         scanf("%f", &raio);
 
         resultado = mediaTresNumeros(&raio);
-        printf("Perímetro do circulo: %.2f\n", resultado);
+        printf("Média de tres numeros: %.2f\n", resultado);
+    }
+
+    if (opcao == 7)
+    {
+        float cateto1;
+        float cateto2;
+
+        printf("Informe o primeiro cateto: ");
+        scanf("%f", &cateto1);
+        printf("Informe o segundo cateto: ");
+        scanf("%f", &cateto2);
+
+        resultado = hipotenusaTrianguloRetangulo(cateto1, cateto2)
+        printf("Hipotenusa: %.2f\n", resultado);
+    }
+
+    if (opcao < 0 || opcao > 7)
+    {
+        printf("Informe uma opção valida");
     }
         
     return 0;
 
 }
 
-float areaRetangulo(float *base, float *altura)
+float areaRetangulo(float base, float altura)
 {
-    return *base / *altura;
+    return base * altura;
 }
 
-float areaTrinagulo(float *base, float *altura)
+float areaTrinagulo(float base, float altura)
 {
-    return (*base * *altura) / 2;
+    return (base * altura) / 2;
 }
 
-float areaTrinaguloRetangulo(float *cateto1, float *cateto2)
+float areaTrinaguloRetangulo(float cateto1, float cateto2)
 {
-    return (*cateto1 * *cateto2) / 2;
+    return (cateto1 * cateto2) / 2;
 }
 
-float areaCirculo(float *raio)
+float areaCirculo(float raio)
 {
-    return (*raio * *raio) * PI;
+    return (raio * raio) * PI;
 }
 
-float perimetroCirculo(float *raio)
+float perimetroCirculo(float raio)
 {
-    return *raio * PI * 2;
+    return raio * PI * 2;
 }
 
-float mediaTresNumeros(float *num1, float *num2, float *num3)
+float mediaTresNumeros(float num1, float num2, float num3)
 {
-    return (*num1 + *num2 + *num3) / 3;
+    return (num1 + num2 + num3) / 3;
 }
 
-float hipotenusaTrianguloRetangulo(float *catetoA, float * catetoB)
+float hipotenusaTrianguloRetangulo(float catetoA, float catetoB)
 {
-    return sqrt((*catetoA * *catetoA) + (*catetoB * *catetoB));
+    return sqrt((catetoA * catetoA) + (catetoB * catetoB));
 }
-
-// if (opcao < 1 || opcao > 7)
-//     {
-//         printf("Informe um valor valido\n");
-//         printf("Opções de resolução:  \n\n");
-//         printf("1. Área de um retângulo.\n");
-//         printf("2. Área de triângulo qualquer.\n");
-//         printf("3. Área de triângulo retângulo.\n");
-//         printf("4. Área de círculo.\n");
-//         printf("5. Perímetro de círculo.\n");
-//         printf("6. Média de três números de ponto flutuante.\n");
-//         printf("7. Hipotenusa de um triângulo retângulo.");
-//         scanf("%d", &opcao);
-//     } else {
