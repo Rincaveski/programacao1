@@ -16,7 +16,7 @@ int main()
     int opcao;
     float resultado;
 
-    printf("Opções de resolução:  \n\n");
+    printf("Opções de resolução:\n");
     printf("1. Área de um retângulo.\n");
     printf("2. Área de triângulo qualquer.\n");
     printf("3. Área de triângulo retângulo.\n");
@@ -39,7 +39,7 @@ int main()
         printf("Informe a altura: ");
         scanf("%f", &altura);
 
-        resultado = areaRetangulo(&base, &altura);
+        resultado = areaRetangulo(base, altura);
         printf("Área do retângulo: %.2f\n", resultado);
     }
 
@@ -53,7 +53,7 @@ int main()
         printf("Informe a altura: ");
         scanf("%f", &altura);
 
-        resultado = areaTrinagulo(&base, &altura);
+        resultado = areaTrinagulo(base, altura);
         printf("Área do triângulo: %.2f\n", resultado);
     }
 
@@ -67,7 +67,7 @@ int main()
         printf("Informe o segundo cateto: ");
         scanf("%f", &cateto2);
 
-        resultado = areaTrinaguloRetangulo(&cateto1, &cateto2);
+        resultado = areaTrinaguloRetangulo(cateto1, cateto2);
         printf("Área do triângulo retangulo: %.2f\n", resultado);
     }
 
@@ -78,7 +78,7 @@ int main()
         printf("Informe o raio: ");
         scanf("%f", &raio);
 
-        resultado = areaCirculo(&raio);
+        resultado = areaCirculo(raio);
         printf("Área do circulo: %.2f\n", resultado);
     }
 
@@ -89,18 +89,24 @@ int main()
         printf("Informe o raio: ");
         scanf("%f", &raio);
 
-        resultado = perimetroCirculo(&raio);
+        resultado = perimetroCirculo(raio);
         printf("Perímetro do circulo: %.2f\n", resultado);
     }
 
     if (opcao == 6)
     {
-        float raio;
+        float numero1;
+        float numero2;
+        float numero3;
 
-        printf("Informe o raio: ");
-        scanf("%f", &raio);
+        printf("Informe o numero 1: ");
+        scanf("%f", &numero1);
+        printf("Informe o numero 2: ");
+        scanf("%f", &numero2);
+        printf("Informe o numero 3: ");
+        scanf("%f", &numero3);
 
-        resultado = mediaTresNumeros(&raio);
+        resultado = mediaTresNumeros(numero1, numero2, numero3);
         printf("Média de tres numeros: %.2f\n", resultado);
     }
 
@@ -114,13 +120,14 @@ int main()
         printf("Informe o segundo cateto: ");
         scanf("%f", &cateto2);
 
-        resultado = hipotenusaTrianguloRetangulo(cateto1, cateto2)
+        resultado = hipotenusaTrianguloRetangulo(cateto1, cateto2);
         printf("Hipotenusa: %.2f\n", resultado);
     }
 
     if (opcao < 0 || opcao > 7)
     {
-        printf("Informe uma opção valida");
+        printf("Informe uma opção valida\n\n");
+        main();
     }
         
     return 0;
