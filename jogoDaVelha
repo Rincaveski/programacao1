@@ -8,13 +8,23 @@ int validaGanhador();
 char jogo[3][3] = {{'#', '#', '#'}, {'#', '#', '#'}, {'#', '#', '#'}};
 
 int main() {
-    int isJogadorX = 0;
+    int isJogadorX = 1;
+    int jogadas = 0;
     
     apresentaJogo();
 
     do
     {
-        jogada(&isJogadorX);
+        if (jogadas == 9)
+        {
+            printf("O Jogo acabou em empate");
+        }
+        else
+        {
+            jogada(&isJogadorX);
+            jogadas++;
+        }
+
     } while (validaGanhador() == 1);
     
 
@@ -23,6 +33,7 @@ int main() {
 
 void apresentaJogo() 
 {
+    system("clear");
     printf("  1 2 3\n");
     printf("1 %c-%c-%c\n", jogo[0][0], jogo[0][1], jogo[0][2]);
     printf("2 %c-%c-%c\n", jogo[1][0], jogo[1][1], jogo[1][2]);
@@ -41,7 +52,7 @@ void jogada(int *jogador)
     printf("Selecione uma coluna: ");
     scanf("%d", &coluna);
     
-    while (jogo[linha][coluna] == 'X' || jogo[linha][coluna] == 'O')
+    while (jogo[linha - 1][coluna -1] == 'X' || jogo[linha - 1][coluna - 1] == 'O')
     {
         printf("Essa casa já foi utilizada\n");
         printf("Selecione uma linha: ");
@@ -53,7 +64,6 @@ void jogada(int *jogador)
     jogo[linha - 1][coluna - 1] = *jogador == 1 ? 'X' : 'O';
     *jogador = *jogador == 1 ? 0 : 1;
     
-    system("clear");
     apresentaJogo();
 }
 
@@ -67,7 +77,7 @@ int validaGanhador() {
     (jogo[0][0] == 'X' && jogo[1][1] == 'X' && jogo[2][2] == 'X') ||
     (jogo[0][2] == 'X' && jogo[1][1] == 'X' && jogo[2][0] == 'X'))
     {
-        printf('X ganhou');
+        printf("X ganhou\n");
         return 0;
     }
 
@@ -80,7 +90,7 @@ int validaGanhador() {
     (jogo[0][0] == 'O' && jogo[1][1] == 'O' && jogo[2][2] == 'O') ||
     (jogo[0][2] == 'O' && jogo[1][1] == 'O' && jogo[2][0] == 'O'))
     {
-        printf('O ganhou');
+        printf("O ganhou\n");
         return 0;
     }
 
